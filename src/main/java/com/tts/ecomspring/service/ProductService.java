@@ -3,18 +3,20 @@ package com.tts.ecomspring.service;
 import com.tts.ecomspring.model.Product;
 import com.tts.ecomspring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductService {
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     public List<Product> findAll(){
         return productRepository.findAll();
     }
 
-    public Product findById(int id) {
+    public Product findById(long id) {
         return productRepository.findById(id);
     }
 
@@ -30,7 +32,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(long id) {
         productRepository.deleteById(id);
     }
 
@@ -42,6 +44,6 @@ public class ProductService {
         else if(brand == null)
             return productRepository.findByCategory(category);
         else
-            return productRepository.findByBrandAndOrCategory(brand, category);
+            return productRepository.findByBrandAndCategory(brand, category);
     }
 }

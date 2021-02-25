@@ -1,5 +1,7 @@
 package com.tts.ecomspring.service;
 
+import com.tts.ecomspring.model.Product;
+import com.tts.ecomspring.model.User;
 import com.tts.ecomspring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -30,8 +34,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User getLoggedInUser() {
-        return
-                findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        return findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     public void updateCart(Map<Product, Integer> cart){

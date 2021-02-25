@@ -7,24 +7,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Builder
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Product {
+public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_id")
-    // ints
+    @Column(name = "role_id")
     private Long id;
-    private int quantity;
-    private double price;
-
-    //strings
-    private String brand;
-    private String category;
-    private String name;
-    private String image;
-    private String description;
+    private String role;
 }

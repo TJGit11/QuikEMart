@@ -1,6 +1,7 @@
 package com.tts.ecomspring.controller;
 
 import com.tts.ecomspring.model.Product;
+import com.tts.ecomspring.model.User;
 import com.tts.ecomspring.service.ProductService;
 import com.tts.ecomspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class CartController {
     public Map<Product, Integer> cart(){
         User user = loggedInUser();
         if(user == null) return null;
-        System.out.println("getting cart");
+        System.out.println("Getting cart");
         return user.getCart();
     }
 
@@ -54,7 +55,7 @@ public class CartController {
     }
 
     @PatchMapping("/cart")
-    public String updateQuantities(@RequestParam Long[] id, @RequestParam int[] quantity){
+    public String updateQuantities(@RequestParam long[] id, @RequestParam int[] quantity){
         for(int i = 0; i < id.length; i++) {
             Product p = productService.findById(id[i]);
             setQuantity(p, quantity[i]);
@@ -63,7 +64,7 @@ public class CartController {
     }
 
     @DeleteMapping("/cart")
-    public String removeFromCart(@RequestParam Long id) {
+    public String removeFromCart(@RequestParam long id) {
         Product p = productService.findById(id);
         setQuantity(p, 0);
         return "cart";

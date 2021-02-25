@@ -1,5 +1,6 @@
 package com.tts.ecomspring.controller;
 
+import com.tts.ecomspring.model.User;
 import com.tts.ecomspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
